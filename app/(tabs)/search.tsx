@@ -49,7 +49,7 @@ export default function Search() {
           )}
           ListEmptyComponent={
             <Text className="mt-8 text-center text-gray-400">
-              No tasks found matching "{searchQuery}"
+              No tasks found matching: {searchQuery}
             </Text>
           }
         />

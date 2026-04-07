@@ -37,8 +37,8 @@ export default function DashboardHeader({
 
       <Image
         source={require('../../assets/logofin.png')}
-        className="mt-4 h-10 w-28"
-        resizeMode="contain"
+        className="mt-4 h-10 w-20"
+        // resizeMode="contain"
       />
       <Text className="mt-1 text-4xl font-bold text-[#f0f6ff]">Welcome Back,{name}</Text>
       <Text className="mt-1 text-sm text-[#8ea2bc]">{subtitle}</Text>

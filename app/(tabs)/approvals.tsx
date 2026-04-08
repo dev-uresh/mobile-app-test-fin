@@ -1,62 +1,22 @@
 import { View, FlatList, Text } from 'react-native';
 import { useState, useMemo } from 'react';
+import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import ApprovalCard, { Approval } from '@/components/Approvalcard';
+import ApprovalCard from '@/components/Approvalcard';
 import FilterTabs, { FilterTab } from '@/components/Filtertabs';
 import SearchBar from '@/components/Searchbar';
-
-const MOCK_APPROVALS: Approval[] = [
-  {
-    id: '1',
-    appNumber: 'APP00000857',
-    loanType: 'Business Loan',
-    customerName: 'Isal Lakshika suriyapathiraja',
-    amount: 'RS 150,000',
-    dueDate: 'Mar 18, 2026',
-    createdDate: 'March 16, 2025',
-    priority: 'HIGH',
-  },
-  {
-    id: '2',
-    appNumber: 'APP00000857',
-    loanType: 'Business Loan',
-    customerName: 'Isal Lakshika suriyapathiraja',
-    amount: 'RS 150,000',
-    dueDate: 'Mar 18, 2026',
-    createdDate: 'March 16, 2025',
-    priority: 'LOW',
-  },
-  {
-    id: '3',
-    appNumber: 'APP00000857',
-    loanType: 'Business Loan',
-    customerName: 'Isal Lakshika suriyapathiraja',
-    amount: 'RS 150,000',
-    dueDate: 'Mar 18, 2026',
-    createdDate: 'March 16, 2025',
-    priority: 'MEDIUM',
-  },
-  {
-    id: '4',
-    appNumber: 'APP00000857',
-    loanType: 'Business Loan',
-    customerName: 'Isal Lakshika suriyapathiraja',
-    amount: 'RS 150,000',
-    dueDate: 'Mar 18, 2026',
-    createdDate: 'March 16, 2025',
-    priority: 'HIGH',
-  },
-];
+import { APPROVALS } from '@/data/approvals';
 
 const TABS: FilterTab[] = ['All', 'High', 'Medium', 'Low'];
 
 export default function ApprovalsScreen() {
+  const router = useRouter();
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState<FilterTab>('All');
 
   const filtered = useMemo(() => {
-    return MOCK_APPROVALS.filter((item) => {
+    return APPROVALS.filter((item) => {
       const matchesSearch =
         search.trim() === '' ||
         item.appNumber.toLowerCase().includes(search.toLowerCase()) ||
@@ -95,7 +55,7 @@ export default function ApprovalsScreen() {
           <ApprovalCard
             item={item}
             onPress={(approval) => {
-              console.log('Pressed:', approval.appNumber);
+              router.push({ pathname: '/(tabs)/approval-details', params: { id: approval.id } });
             }}
           />
         )}

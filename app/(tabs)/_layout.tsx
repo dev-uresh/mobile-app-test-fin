@@ -1,7 +1,7 @@
 import { Drawer } from 'expo-router/drawer';
 import { Ionicons, MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 function CustomDrawerContent(props: any) {
   return (
@@ -74,6 +74,22 @@ export default function TabLayout() {
             <Ionicons name="checkmark-done-outline" size={size} color={color} />
           ),
         }}
+      />
+      <Drawer.Screen
+        name="approval-details"
+        options={({ navigation }) => ({
+          title: 'Approval Details',
+          drawerItemStyle: { display: 'none' },
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('approvals')}
+              activeOpacity={0.8}
+              className="ml-4"
+            >
+              <Ionicons name="arrow-back" size={22} color="#d9e8fb" />
+            </TouchableOpacity>
+          ),
+        })}
       />
       <Drawer.Screen
         name="reports"

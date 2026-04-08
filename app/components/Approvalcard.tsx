@@ -1,23 +1,13 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import PriorityBadge, { Priority } from './Prioritybadge';
+import type { Approval } from '@/data/approvals';
 
 const PRIORITY_ACCENT: Record<Priority, string> = {
   HIGH: 'border-t-[#c9162a]',
   MEDIUM: 'border-t-[#cc6823]',
   LOW: 'border-t-[#0a9a43]',
 };
-
-export interface Approval {
-  id: string;
-  appNumber: string;
-  loanType: string;
-  customerName: string;
-  amount: string;
-  dueDate: string;
-  createdDate: string;
-  priority: Priority;
-}
 
 interface ApprovalCardProps {
   item: Approval;

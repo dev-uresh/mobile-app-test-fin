@@ -22,9 +22,9 @@ export default function ActionButton({ label, tone, onPress }: ActionButtonProps
     <TouchableOpacity
       activeOpacity={0.8}
       onPress={onPress}
-      className={`h-11 flex-1 items-center justify-center rounded-xl border bg-[#051b33] ${style.border}`}
+      className={`h-12 flex-1 items-center justify-center rounded-xl border bg-[#051b33] ${style.border}`}
     >
-      <Text className={`text-sm font-semibold ${style.text}`}>{label}</Text>
+      <Text className={`text-base font-semibold ${style.text}`}>{label}</Text>
     </TouchableOpacity>
   );
 }

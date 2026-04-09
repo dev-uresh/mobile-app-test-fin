@@ -41,7 +41,9 @@ export default function DashboardHeader({
         // resizeMode="contain"
       />
       <Text className="mt-1 text-4xl font-bold text-[#f0f6ff]">Welcome Back,{name}</Text>
-      <Text className="mt-1 text-sm text-[#8ea2bc]">{subtitle}</Text>
+      <Text className="mt-2 text-sm text-[#8ea2bc]" style={{ fontSize: 18 }}>
+        {subtitle}
+      </Text>
     </View>
   );
 }

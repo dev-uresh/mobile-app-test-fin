@@ -15,8 +15,8 @@ const PRIORITY_STYLES: Record<Priority, { bg: string; text: string }> = {
 export default function PriorityBadge({ priority }: PriorityBadgeProps) {
   const style = PRIORITY_STYLES[priority] ?? PRIORITY_STYLES.MEDIUM;
   return (
-    <View className={`rounded-full px-3 py-1 ${style.bg}`}>
-      <Text className={`text-[10px] font-semibold tracking-wide ${style.text}`}>
+    <View className={`rounded-full px-3 py-1.5 ${style.bg}`}>
+      <Text className={`text-xs font-semibold tracking-wide ${style.text}`}>
         {priority}
       </Text>
     </View>

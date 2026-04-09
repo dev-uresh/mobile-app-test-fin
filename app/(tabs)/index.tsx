@@ -86,7 +86,7 @@ export default function Home() {
           {stats.map((stat) => (
             <StatCard
               key={stat.label}
-              icon={<Ionicons name={stat.iconName} size={18} color="#7cd0ff" />}
+              icon={<Ionicons name={stat.iconName} size={24} color="#7cd0ff" />}
               label={stat.label}
               value={stat.value}
               iconBg={stat.iconBg}

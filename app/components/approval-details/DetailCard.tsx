@@ -38,25 +38,27 @@ export default function DetailCard({
       <View className="flex-row items-start justify-between gap-x-3">
         <View className="flex-1">
           <View className="flex-row items-center gap-x-2">
-            <View className="h-7 w-7 items-center justify-center rounded-full bg-[#073f6a]">
-              <Ionicons name={icon} size={14} color="#37bbff" />
+            <View className="h-8 w-8 items-center justify-center rounded-full bg-[#073f6a]">
+              <Ionicons name={icon} size={16} color="#37bbff" />
             </View>
-            <Text className="text-sm text-[#8ea5bf]">{title}</Text>
+            <Text className="text-base text-[#8ea5bf]">{title}</Text>
           </View>
 
           {!!value && (
-            <Text className={`mt-2 text-base font-semibold ${valueTone === 'success' ? 'text-[#00f0a0]' : 'text-[#d7e6f7]'}`}>
+            <Text
+              className={`mt-2 text-lg font-semibold ${valueTone === 'success' ? 'text-[#00f0a0]' : 'text-[#d7e6f7]'}`}
+            >
               {value}
             </Text>
           )}
 
-          {!!subValue && <Text className="mt-0.5 text-xs text-[#7f98b7]">{subValue}</Text>}
+          {!!subValue && <Text className="mt-1 text-sm text-[#7f98b7]">{subValue}</Text>}
         </View>
 
         <View className="items-end">
           {!!rightLinkText && (
             <TouchableOpacity activeOpacity={0.8} onPress={onRightPress}>
-              <Text className="text-xs font-medium text-[#0caeff]">{rightLinkText}</Text>
+              <Text className="text-sm font-medium text-[#0caeff]">{rightLinkText}</Text>
             </TouchableOpacity>
           )}
           {!!priority && (
@@ -64,7 +66,7 @@ export default function DetailCard({
               <PriorityBadge priority={priority} />
             </View>
           )}
-          {showChevron ? <Ionicons name="chevron-down" size={16} color="#6d88aa" /> : null}
+          {showChevron ? <Ionicons name="chevron-down" size={18} color="#6d88aa" /> : null}
         </View>
       </View>
     </Wrapper>

@@ -18,13 +18,19 @@ export default function StatCard({
 }: StatCardProps) {
   return (
     <View className="w-[48%] rounded-2xl border border-[#214467] bg-[#0b1f39] p-4">
-      <View className="h-9 w-9 items-center justify-center rounded-xl" style={{ backgroundColor: iconBg }}>
+      <View className="h-12 w-12 items-center justify-center rounded-xl" style={{ backgroundColor: iconBg }}>
         {icon}
       </View>
-      <Text className="mt-3 text-xs text-[#89a0bf]">{label}</Text>
-      <Text className="mt-1 text-4xl font-bold text-[#eaf3ff]">{value}</Text>
+      <Text className="mt-4 text-sm text-[#89a0bf]" style={{ fontSize: 18 }}>
+        {label}
+      </Text>
+      <Text className="mt-2 text-4xl font-bold text-[#eaf3ff]" style={{ fontSize: 32 }}>
+        {value}
+      </Text>
       {subText ? (
-        <Text className="mt-1 text-xs text-[#5578a1]">{subText}</Text>
+        <Text className="mt-4 text-sm text-[#5578a1]" style={{ fontSize: 16 }}>
+          {subText}
+        </Text>
       ) : null}
     </View>
   );

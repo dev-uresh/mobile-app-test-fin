@@ -10,11 +10,11 @@ interface WorkflowProgressProps {
 export default function WorkflowProgress({ currentStep, totalSteps, stages }: WorkflowProgressProps) {
   return (
     <View className="rounded-2xl border border-[#0f78bf] bg-[#0b3050] px-4 py-4">
-      <Text className="text-base font-semibold text-[#e4f2ff]">Application Workflow History</Text>
+      <Text className="text-lg font-semibold text-[#e4f2ff]">Application Workflow History</Text>
 
       <View className="mt-4 flex-row items-center justify-between">
-        <Text className="text-xs text-[#8db2d4]">Workflow Stage</Text>
-        <Text className="text-xs text-[#8db2d4]">
+        <Text className="text-sm text-[#8db2d4]">Workflow Stage</Text>
+        <Text className="text-sm text-[#8db2d4]">
           Step {currentStep} of {totalSteps}
         </Text>
       </View>
@@ -44,7 +44,7 @@ export default function WorkflowProgress({ currentStep, totalSteps, stages }: Wo
               >
                 {isDone ? <Ionicons name="checkmark" size={12} color="#00182d" /> : null}
               </View>
-              <Text className="ml-2.5 text-sm font-medium text-[#d7e8fa]">{stage}</Text>
+              <Text className="ml-2.5 text-base font-medium text-[#d7e8fa]">{stage}</Text>
             </View>
           );
         })}

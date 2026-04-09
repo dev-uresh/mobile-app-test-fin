@@ -17,14 +17,14 @@ export default function FilterTabs({
   onFilterPress,
 }: FilterTabsProps) {
   return (
-    <View className="mt-3 flex-row items-center gap-x-2">
+    <View className="mt-3 flex-row items-center gap-x-3">
       {/* Filter Button */}
       <TouchableOpacity
         onPress={onFilterPress}
-        className="flex-row items-center gap-x-1.5 rounded-full bg-[#0f67b5] px-4 py-2"
+        className="flex-row items-center gap-x-2 rounded-full bg-[#0f67b5] px-5 py-2.5"
       >
-        <Ionicons name="options-outline" size={14} color="#e7f4ff" />
-        <Text className="text-sm font-semibold text-[#e7f4ff]">Filters</Text>
+        <Ionicons name="options-outline" size={18} color="#e7f4ff" />
+        <Text className="text-base font-semibold text-[#e7f4ff]">Filters</Text>
       </TouchableOpacity>
 
       {/* Tabs */}
@@ -33,14 +33,14 @@ export default function FilterTabs({
           <TouchableOpacity
             key={tab}
             onPress={() => onTabChange(tab)}
-            className={`mr-2 rounded-full px-4 py-2 ${
+            className={`mr-2.5 rounded-full px-5 py-2.5 ${
               activeTab === tab
                 ? 'bg-[#0f67b5]'
                 : 'border border-[#1f3552] bg-transparent'
             }`}
           >
             <Text
-              className={`text-sm font-semibold ${
+              className={`text-base font-semibold ${
                 activeTab === tab ? 'text-[#e7f4ff]' : 'text-[#8ea2bc]'
               }`}
             >

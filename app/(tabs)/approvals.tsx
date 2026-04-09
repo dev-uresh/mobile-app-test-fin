@@ -32,7 +32,9 @@ export default function ApprovalsScreen() {
     <SafeAreaView className="flex-1 bg-[#020b1a]">
       <View className="px-4 pt-2 pb-2">
         <Text className="text-2xl font-bold text-[#f0f6ff]">Approvals</Text>
-        <Text className="mt-0.5 text-sm text-[#8ea2bc]">Pending Funding</Text>
+        <Text className="mt-0.5 text-sm text-[#8ea2bc]" style={{ fontSize: 14 }}>
+          Pending Funding
+        </Text>
 
         <View className="mt-4">
           <SearchBar value={search} onChangeText={setSearch} />

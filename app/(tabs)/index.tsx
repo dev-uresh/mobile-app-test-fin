@@ -1,7 +1,6 @@
 import { ScrollView, View } from 'react-native';
 import { useEffect } from 'react';
 import { useRouter } from 'expo-router';
-import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -11,15 +10,10 @@ import StatCard from '@/components/Statcard';
 import QuickActions from '@/components/QuickActions';
 import RecentActivity from '@/components/Recentactivity';
 
-type DrawerLikeNavigation = {
-  openDrawer?: () => void;
-};
-
 export default function Home() {
   const tasks = useTaskStore((state) => state.tasks);
   const loadTasks = useTaskStore((state) => state.loadTasks);
   const router = useRouter();
-  const navigation = useNavigation<DrawerLikeNavigation>();
 
   const pendingApprovals = tasks.filter((t) => !t.completed).length;
   const opinionRequests = tasks.filter((t) => t.completed).length;
@@ -78,7 +72,7 @@ export default function Home() {
       <ScrollView contentContainerStyle={{ padding: 16, paddingTop: 8, paddingBottom: 28 }}>
         <DashboardHeader
           name="Admin"
-          onMenuPress={() => navigation.openDrawer?.()}
+          onMenuPress={() => router.push('/(tabs)/settings')}
           onAlertsPress={() => router.push('/(tabs)/approvals')}
         />
 

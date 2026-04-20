@@ -1,146 +1,105 @@
-import { Drawer } from 'expo-router/drawer';
-import { Ionicons, MaterialIcons, FontAwesome } from '@expo/vector-icons';
-import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-import { Text, TouchableOpacity, View } from 'react-native';
-
-function CustomDrawerContent(props: any) {
-  return (
-    <DrawerContentScrollView
-      {...props}
-      contentContainerStyle={{ flex: 1, paddingTop: 0, backgroundColor: '#08172D' }}
-    >
-      <View className="border-b border-[#183150] px-5 pb-4 pt-14">
-        <Text className="text-xl font-bold text-[#d9e8fb]">finverus</Text>
-        <Text className="mt-1 text-xs tracking-[1.5px] text-[#86a3c4]">ADMIN DASHBOARD</Text>
-      </View>
-
-      <View className="flex-1 pt-3">
-        <DrawerItemList {...props} />
-      </View>
-
-      <View className="border-t border-[#183150] p-3">
-        <DrawerItem
-          label="Help"
-          labelStyle={{ color: '#b3cae6', fontSize: 14, marginLeft: -12 }}
-          icon={({ color, size }) => <Ionicons name="help-circle-outline" size={size} color={color} />}
-          onPress={() => props.navigation.navigate('help')}
-          inactiveTintColor="#86a3c4"
-        />
-        <DrawerItem
-          label="Settings"
-          labelStyle={{ color: '#b3cae6', fontSize: 14, marginLeft: -12 }}
-          icon={({ color, size }) => <Ionicons name="settings-outline" size={size} color={color} />}
-          onPress={() => props.navigation.navigate('settings')}
-          inactiveTintColor="#86a3c4"
-        />
-      </View>
-    </DrawerContentScrollView>
-  );
-}
+import { Tabs } from 'expo-router';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function TabLayout() {
+  const insets = useSafeAreaInsets();
+
   return (
-    <Drawer
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
+    <Tabs
       screenOptions={{
         headerStyle: { backgroundColor: '#08172D' },
         headerTintColor: '#d9e8fb',
         headerShadowVisible: false,
         headerTitleStyle: { fontWeight: '700' },
         sceneStyle: { backgroundColor: '#020b1a' },
-        drawerType: 'front',
-        drawerStyle: { backgroundColor: '#08172D', width: 286 },
-        drawerActiveTintColor: '#e6f4ff',
-        drawerInactiveTintColor: '#9bb6d4',
-        drawerActiveBackgroundColor: '#0e355c',
-        drawerLabelStyle: { marginLeft: -12, fontSize: 14, fontWeight: '600' },
+        tabBarStyle: {
+          backgroundColor: '#08172D',
+          borderTopColor: '#183150',
+          borderTopWidth: 1,
+          height: 56 + insets.bottom,
+          paddingBottom: Math.max(insets.bottom, 8),
+          paddingTop: 6,
+        },
+        tabBarActiveTintColor: '#e6f4ff',
+        tabBarInactiveTintColor: '#9bb6d4',
+        tabBarLabelStyle: { fontSize: 12, fontWeight: '600' },
       }}
     >
-      <Drawer.Screen
+      <Tabs.Screen
         name="index"
         options={{
           title: 'Dashboard',
           headerShown: false,
-          drawerIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }) => (
             <Ionicons name="home-outline" size={size} color={color} />
           ),
         }}
       />
-      <Drawer.Screen
+      <Tabs.Screen
         name="approvals"
         options={{
           title: 'Approvals',
-          drawerIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }) => (
             <Ionicons name="checkmark-done-outline" size={size} color={color} />
           ),
         }}
       />
-      <Drawer.Screen
-        name="approval-details"
-        options={({ navigation }) => ({
-          title: 'Approval Details',
-          drawerItemStyle: { display: 'none' },
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('approvals')}
-              activeOpacity={0.8}
-              className="ml-4"
-            >
-              <Ionicons name="arrow-back" size={22} color="#d9e8fb" />
-            </TouchableOpacity>
-          ),
-        })}
-      />
-      <Drawer.Screen
+      <Tabs.Screen
         name="reports"
         options={{
           title: 'Reports',
-          drawerIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }) => (
             <Ionicons name="stats-chart-outline" size={size} color={color} />
           ),
         }}
       />
-      <Drawer.Screen
+      <Tabs.Screen
         name="search"
         options={{
           title: 'Search',
-          drawerIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }) => (
             <Ionicons name="search-outline" size={size} color={color} />
           ),
         }}
       />
-      <Drawer.Screen
-        name="add"
-        options={{
-          title: 'Add Task',
-          drawerIcon: ({ color, size }) => (
-            <MaterialIcons name="add-circle-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Drawer.Screen
+      <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
-          drawerIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }) => (
             <FontAwesome name="user-o" size={size} color={color} />
           ),
         }}
       />
-      <Drawer.Screen
+      <Tabs.Screen
+        name="approval-details"
+        options={{
+          title: 'Approval Details',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="add"
+        options={{
+          title: 'Add Task',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
         name="help"
         options={{
           title: 'Help',
-          drawerItemStyle: { display: 'none' },
+          href: null,
         }}
       />
-      <Drawer.Screen
+      <Tabs.Screen
         name="settings"
         options={{
           title: 'Settings',
-          drawerItemStyle: { display: 'none' },
+          href: null,
         }}
       />
-    </Drawer>
+    </Tabs>
   );
 }

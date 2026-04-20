@@ -12,8 +12,8 @@ export default function ApprovalDetailsScreen() {
   const approval = getApprovalById(id);
 
   return (
-    <SafeAreaView className="flex-1 bg-[#020b1a]">
-      <ScrollView contentContainerStyle={{ paddingHorizontal: 12, paddingTop: 16, paddingBottom: 24 }}>
+    <SafeAreaView edges={['left', 'right', 'bottom']} className="flex-1 bg-[#020b1a]">
+      <ScrollView contentContainerStyle={{ paddingHorizontal: 12, paddingTop: 10, paddingBottom: 24 }}>
         <View className="flex-row gap-x-2.5">
           <ActionButton label="Recommend" tone="success" />
           <ActionButton label="Reject" tone="danger" />

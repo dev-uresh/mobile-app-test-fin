@@ -1,82 +1,84 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { useTaskStore } from '../store/taskStore';
+import { industrialTheme } from '@/theme/industrial';
 
 export default function Profile() {
   const tasks = useTaskStore((state) => state.tasks);
   const completedTasks = tasks.filter(task => task.completed).length;
   const pendingTasks = tasks.filter(task => !task.completed).length;
+  const { colors } = industrialTheme;
 
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView className="app-bg flex-1">
       <View className="p-6">
         {/* Profile Header */}
         <View className="items-center mb-8 mt-4">
-          <View className="bg-pink-100 rounded-full w-24 h-24 items-center justify-center mb-4">
-            <FontAwesome name="user" size={48} color="#f63ba2" />
+          <View className="mb-4 h-24 w-24 items-center justify-center rounded-full border border-industrial-border bg-industrial-panel">
+            <FontAwesome name="user" size={48} color={colors.accent} />
           </View>
-          <Text className="text-2xl font-bold text-gray-800">User Profile</Text>
-          <Text className="text-sm text-gray-500 mt-1">user@example.com</Text>
+          <Text className="app-title text-2xl font-bold">User Profile</Text>
+          <Text className="app-body mt-1 text-sm">user@example.com</Text>
         </View>
 
         {/* Stats Section */}
         <View className="mb-6">
-          <Text className="text-xl font-semibold text-gray-800 mb-4">Statistics</Text>
+          <Text className="app-title mb-4 text-xl font-semibold">Statistics</Text>
           <View className="flex-row justify-between">
-            <View className="bg-blue-50 flex-1 p-4 rounded-lg mr-2">
-              <Text className="text-3xl font-bold text-blue-600">{tasks.length}</Text>
-              <Text className="text-sm text-gray-600 mt-1">Total Tasks</Text>
+            <View className="mr-2 flex-1 rounded-lg border border-industrial-border bg-industrial-surface p-4">
+              <Text className="text-3xl font-bold text-industrial-accent">{tasks.length}</Text>
+              <Text className="app-body mt-1 text-sm">Total Tasks</Text>
             </View>
-            <View className="bg-green-50 flex-1 p-4 rounded-lg mx-2">
-              <Text className="text-3xl font-bold text-green-600">{completedTasks}</Text>
-              <Text className="text-sm text-gray-600 mt-1">Completed</Text>
+            <View className="mx-2 flex-1 rounded-lg border border-industrial-border bg-industrial-surface p-4">
+              <Text className="text-3xl font-bold text-industrial-success">{completedTasks}</Text>
+              <Text className="app-body mt-1 text-sm">Completed</Text>
             </View>
-            <View className="bg-orange-50 flex-1 p-4 rounded-lg ml-2">
-              <Text className="text-3xl font-bold text-orange-600">{pendingTasks}</Text>
-              <Text className="text-sm text-gray-600 mt-1">Pending</Text>
+            <View className="ml-2 flex-1 rounded-lg border border-industrial-border bg-industrial-surface p-4">
+              <Text className="text-3xl font-bold text-industrial-warning">{pendingTasks}</Text>
+              <Text className="app-body mt-1 text-sm">Pending</Text>
             </View>
           </View>
         </View>
 
         {/* Settings Section */}
         <View className="mb-6">
-          <Text className="text-xl font-semibold text-gray-800 mb-4">Settings</Text>
+          <Text className="app-title mb-4 text-xl font-semibold">Settings</Text>
           
-          <TouchableOpacity className="flex-row items-center justify-between bg-gray-50 p-4 rounded-lg mb-3">
+          <TouchableOpacity className="mb-3 flex-row items-center justify-between rounded-lg border border-industrial-border bg-industrial-surface p-4">
             <View className="flex-row items-center">
-              <Ionicons name="notifications-outline" size={24} color="#4B5563" />
-              <Text className="text-base text-gray-800 ml-3">Notifications</Text>
+              <Ionicons name="notifications-outline" size={24} color={colors.muted} />
+              <Text className="app-title ml-3 text-base">Notifications</Text>
             </View>
-            <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+            <Ionicons name="chevron-forward" size={20} color={colors.dim} />
           </TouchableOpacity>
 
-          <TouchableOpacity className="flex-row items-center justify-between bg-gray-50 p-4 rounded-lg mb-3">
+          <TouchableOpacity className="mb-3 flex-row items-center justify-between rounded-lg border border-industrial-border bg-industrial-surface p-4">
             <View className="flex-row items-center">
-              <Ionicons name="color-palette-outline" size={24} color="#4B5563" />
-              <Text className="text-base text-gray-800 ml-3">Theme</Text>
+              <Ionicons name="color-palette-outline" size={24} color={colors.muted} />
+              <Text className="app-title ml-3 text-base">Theme</Text>
             </View>
-            <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+            <Ionicons name="chevron-forward" size={20} color={colors.dim} />
           </TouchableOpacity>
 
-          <TouchableOpacity className="flex-row items-center justify-between bg-gray-50 p-4 rounded-lg mb-3">
+          <TouchableOpacity className="mb-3 flex-row items-center justify-between rounded-lg border border-industrial-border bg-industrial-surface p-4">
             <View className="flex-row items-center">
-              <Ionicons name="language-outline" size={24} color="#4B5563" />
-              <Text className="text-base text-gray-800 ml-3">Language</Text>
+              <Ionicons name="language-outline" size={24} color={colors.muted} />
+              <Text className="app-title ml-3 text-base">Language</Text>
             </View>
-            <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+            <Ionicons name="chevron-forward" size={20} color={colors.dim} />
           </TouchableOpacity>
 
-          <TouchableOpacity className="flex-row items-center justify-between bg-gray-50 p-4 rounded-lg">
+          <TouchableOpacity className="flex-row items-center justify-between rounded-lg border border-industrial-border bg-industrial-surface p-4">
             <View className="flex-row items-center">
-              <Ionicons name="help-circle-outline" size={24} color="#4B5563" />
-              <Text className="text-base text-gray-800 ml-3">Help & Support</Text>
+              <Ionicons name="help-circle-outline" size={24} color={colors.muted} />
+              <Text className="app-title ml-3 text-base">Help & Support</Text>
             </View>
-            <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+            <Ionicons name="chevron-forward" size={20} color={colors.dim} />
           </TouchableOpacity>
         </View>
 
         {/* Logout Button */}
-        <TouchableOpacity className="bg-red-500 p-4 rounded-lg items-center mt-4">
+        <TouchableOpacity className="mt-4 items-center rounded-lg bg-industrial-danger p-4">
           <Text className="text-white font-semibold text-base">Logout</Text>
         </TouchableOpacity>
       </View>

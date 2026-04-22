@@ -17,12 +17,13 @@ export default function TaskInput() {
   return (
     <View className="flex-row mb-4 gap-2 items-center">
       <TextInput
-        className="flex-1 border border-gray-300 rounded-lg px-4 text-base"
+        className="flex-1 rounded-lg border border-industrial-border bg-industrial-surface px-4 text-base text-industrial-text"
         style={{ height: 48, lineHeight: 20 }}
         placeholder="Add a new task..."
         value={text}
         onChangeText={setText}
         onSubmitEditing={handleAddTask}
+        placeholderTextColor="#728ba6"
       />
       <Button
         variant="primary"

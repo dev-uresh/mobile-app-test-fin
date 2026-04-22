@@ -12,10 +12,10 @@ export default function TaskItem({ task }: TaskItemProps) {
   const deleteTask = useTaskStore(state => state.deleteTask);
 
   return (
-    <View className="flex-row items-center bg-gray-50 rounded-lg p-4 mb-2">
+    <View className="mb-2 flex-row items-center rounded-lg border border-industrial-border bg-industrial-surface p-4">
       <TouchableOpacity
         className={`w-6 h-6 rounded border-2 mr-3 items-center justify-center ${
-          task.completed ? 'bg-blue-500 border-blue-500' : 'border-gray-300'
+          task.completed ? 'border-industrial-accent bg-industrial-accent' : 'border-industrial-border'
         }`}
         onPress={() => toggleTask(task.id)}
       >
@@ -24,7 +24,7 @@ export default function TaskItem({ task }: TaskItemProps) {
       
       <Text
         className={`flex-1 text-base ${
-          task.completed ? 'line-through text-gray-400' : 'text-gray-800'
+          task.completed ? 'text-industrial-dim line-through' : 'text-industrial-text'
         }`}
       >
         {task.text}

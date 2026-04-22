@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+	.app-bg {
+		@apply bg-industrial-bg;
+	}
+
+	.app-surface {
+		@apply rounded-2xl border border-industrial-border bg-industrial-surface;
+	}
+
+	.app-panel {
+		@apply rounded-2xl border border-industrial-border bg-industrial-panel;
+	}
+
+	.app-title {
+		@apply text-industrial-text;
+	}
+
+	.app-body {
+		@apply text-industrial-muted;
+	}
+
+	.app-caption {
+		@apply text-industrial-dim;
+	}
+}

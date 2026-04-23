@@ -30,7 +30,7 @@ export default function BottomTabNavigator() {
         options={{ tabBarIcon: ({ color, size }) => <Ionicons name="swap-horizontal-outline" size={size} color={color} /> }}
       />
       <Tab.Screen
-        name="Payments"
+        name="Paymentsz"
         component={PaymentScreen}
         options={{ tabBarIcon: ({ color, size }) => <Ionicons name="cash-outline" size={size} color={color} /> }}
       />
@@ -44,11 +44,11 @@ export default function BottomTabNavigator() {
         component={ProfileScreen}
         options={{ tabBarIcon: ({ color, size }) => <FontAwesome name="user-o" size={size} color={color} /> }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Notifications"
         component={NotificationsScreen}
         options={{ tabBarIcon: ({ color, size }) => <Ionicons name="notifications-outline" size={size} color={color} /> }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 }

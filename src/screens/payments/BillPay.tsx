@@ -1,10 +1,18 @@
 import { Text, View } from 'react-native';
+import { useTheme } from '@/hooks/useTheme';
 
 export default function BillPay() {
+  const { theme } = useTheme();
+  const palette = theme.colors;
+
   return (
-    <View className="app-bg flex-1 p-6">
-      <Text className="app-title text-3xl font-bold">Bill Pay</Text>
-      <Text className="app-body mt-2">Pay utilities, loans, and recurring bills.</Text>
+    <View className="flex-1 p-6" style={{ backgroundColor: palette.screenBackground }}>
+      <Text className="text-3xl font-bold" style={{ color: palette.textPrimary }}>
+        Bill Pay
+      </Text>
+      <Text className="mt-2" style={{ color: palette.textMuted }}>
+        Pay utilities, loans, and recurring bills.
+      </Text>
     </View>
   );
 }

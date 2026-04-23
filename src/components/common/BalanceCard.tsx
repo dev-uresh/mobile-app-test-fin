@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Text, View } from 'react-native';
+import { useTheme } from '@/hooks/useTheme';
 
 interface BalanceCardProps {
   icon: ReactNode;
@@ -9,19 +10,26 @@ interface BalanceCardProps {
   iconBg?: string;
 }
 
-export default function BalanceCard({ icon, label, value, subText = '+3 today', iconBg = '#0b5ca6' }: BalanceCardProps) {
+export default function BalanceCard({ icon, label, value, subText = '+3 today', iconBg }: BalanceCardProps) {
+  const { theme } = useTheme();
+  const palette = theme.colors;
+
   return (
-    <View className="w-[48%] rounded-2xl border border-[#214467] bg-[#0b1f39] p-4">
-      <View className="h-12 w-12 items-center justify-center rounded-xl" style={{ backgroundColor: iconBg }}>
+    <View className="w-[48%] rounded-2xl border p-4" style={{ borderColor: palette.border, backgroundColor: palette.surface }}>
+      <View className="h-12 w-12 items-center justify-center rounded-xl" style={{ backgroundColor: iconBg ?? palette.surfaceRaised }}>
         {icon}
       </View>
-      <Text className="mt-4 text-sm text-[#89a0bf]" style={{ fontSize: 18 }}>
+      <Text className="mt-4 text-sm" style={{ fontSize: 18, color: palette.textMuted }}>
         {label}
       </Text>
-      <Text className="mt-2 text-4xl font-bold text-[#eaf3ff]" style={{ fontSize: 32 }}>
+      <Text className="mt-2 text-4xl font-bold" style={{ fontSize: 32, color: palette.textPrimary }}>
         {value}
       </Text>
-      {subText ? <Text className="mt-4 text-sm text-[#5578a1]" style={{ fontSize: 16 }}>{subText}</Text> : null}
+      {subText ? (
+        <Text className="mt-4 text-sm" style={{ fontSize: 16, color: palette.textSecondary }}>
+          {subText}
+        </Text>
+      ) : null}
     </View>
   );
 }

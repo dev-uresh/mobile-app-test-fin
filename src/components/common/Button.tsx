@@ -1,5 +1,6 @@
 import { StyleSheet, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { ReactNode } from 'react';
+import { useTheme } from '@/hooks/useTheme';
 
 interface ButtonProps extends TouchableOpacityProps {
   children: ReactNode;
@@ -8,6 +9,8 @@ interface ButtonProps extends TouchableOpacityProps {
 }
 
 export function Button({ children, variant = 'primary', size = 'md', className = '', style, ...props }: ButtonProps) {
+  const { theme } = useTheme();
+  const palette = theme.colors;
   const baseStyles = 'rounded-lg items-center justify-center';
 
   const variantStyles = {
@@ -26,10 +29,32 @@ export function Button({ children, variant = 'primary', size = 'md', className =
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
   const inlineStyles = StyleSheet.create({
-    primary: { backgroundColor: '#3b82f6', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
-    secondary: { backgroundColor: '#1e293b', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
-    outline: { borderWidth: 2, borderColor: '#3b82f6', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
-    danger: { backgroundColor: '#dc2626', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
+    primary: {
+      backgroundColor: palette.amountAccent,
+      borderRadius: 8,
+      paddingHorizontal: 24,
+      paddingVertical: 12,
+    },
+    secondary: {
+      backgroundColor: palette.surfaceRaised,
+      borderRadius: 8,
+      paddingHorizontal: 24,
+      paddingVertical: 12,
+    },
+    outline: {
+      borderWidth: 2,
+      borderColor: palette.amountAccent,
+      borderRadius: 8,
+      paddingHorizontal: 24,
+      paddingVertical: 12,
+      backgroundColor: 'transparent',
+    },
+    danger: {
+      backgroundColor: palette.statusDanger,
+      borderRadius: 8,
+      paddingHorizontal: 24,
+      paddingVertical: 12,
+    },
   });
 
   return (

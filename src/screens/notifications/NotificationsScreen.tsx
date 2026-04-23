@@ -1,10 +1,18 @@
 import { Text, View } from 'react-native';
+import { useTheme } from '@/hooks/useTheme';
 
 export default function NotificationsScreen() {
+  const { theme } = useTheme();
+  const palette = theme.colors;
+
   return (
-    <View className="app-bg flex-1 p-6">
-      <Text className="app-title text-3xl font-bold">Notifications</Text>
-      <Text className="app-body mt-2">Alerts, reminders, and status updates appear here.</Text>
+    <View className="flex-1 p-6" style={{ backgroundColor: palette.screenBackground }}>
+      <Text className="text-3xl font-bold" style={{ color: palette.textPrimary }}>
+        Notifications
+      </Text>
+      <Text className="mt-2" style={{ color: palette.textMuted }}>
+        Alerts, reminders, and status updates appear here.
+      </Text>
     </View>
   );
 }

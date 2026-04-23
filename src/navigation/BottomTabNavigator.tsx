@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 import DashboardScreen from '@/screens/dashboard/DashboardScreen';
-import CardsScreen from '@/screens/cards/CardsScreen';
+import ApprovelQueue from '@/screens/cards/ApprovelQueue';
 import TransferScreen from '@/screens/transfer/TransferScreen';
 import PaymentScreen from '@/screens/payments/PaymentScreen';
 import StatementScreen from '@/screens/statements/StatementScreen';
@@ -21,7 +21,7 @@ export default function BottomTabNavigator() {
       />
       <Tab.Screen
         name="Cards"
-        component={CardsScreen}
+        component={ApprovelQueue}
         options={{ tabBarIcon: ({ color, size }) => <Ionicons name="card-outline" size={size} color={color} /> }}
       />
       <Tab.Screen

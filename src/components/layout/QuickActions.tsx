@@ -1,4 +1,5 @@
 import { Text, TouchableOpacity, View } from 'react-native';
+import { useTheme } from '@/hooks/useTheme';
 
 interface QuickAction {
   label: string;
@@ -11,13 +12,30 @@ interface QuickActionsProps {
 }
 
 export default function QuickActions({ actions }: QuickActionsProps) {
+  const { theme } = useTheme();
+  const palette = theme.colors;
+
   return (
     <View>
-      <Text className="mt-6 text-2xl font-bold text-[#d8e6f7]">Quick Actions</Text>
+      <Text className="mt-6 text-2xl font-bold" style={{ color: palette.textPrimary }}>
+        Quick Actions
+      </Text>
       <View className="mt-4 flex-row justify-between">
         {actions.map((action, index) => (
-          <TouchableOpacity key={index} onPress={action.onPress} className={action.variant === 'secondary' ? 'w-[48%] rounded-xl border border-[#29476d] bg-[#102541] px-4 py-4' : 'w-[48%] rounded-xl bg-[#0f67b5] px-4 py-4'}>
-            <Text className={action.variant === 'secondary' ? 'text-center font-semibold text-[#c4dbf3]' : 'text-center font-semibold text-[#e7f4ff]'}>
+          <TouchableOpacity
+            key={index}
+            onPress={action.onPress}
+            className="w-[48%] rounded-xl px-4 py-4"
+            style={
+              action.variant === 'secondary'
+                ? { borderWidth: 1, borderColor: palette.border, backgroundColor: palette.surface }
+                : { backgroundColor: palette.amountAccent }
+            }
+          >
+            <Text
+              className="text-center font-semibold"
+              style={{ color: action.variant === 'secondary' ? palette.textSecondary : theme.raw.neutral.white }}
+            >
               {action.label}
             </Text>
           </TouchableOpacity>

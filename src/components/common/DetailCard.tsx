@@ -1,5 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Text, TouchableOpacity, View } from 'react-native';
+import { useTheme } from '@/hooks/useTheme';
 
 import PriorityBadge, { Priority } from './PriorityBadge';
 
@@ -28,32 +29,49 @@ export default function DetailCard({
   showChevron,
   onPress,
 }: DetailCardProps) {
+  const { theme } = useTheme();
+  const palette = theme.colors;
   const Wrapper = onPress ? TouchableOpacity : View;
 
   return (
-    <Wrapper {...(onPress ? { activeOpacity: 0.9, onPress } : {})} className="rounded-2xl border border-[#1f3d61] bg-[#102944] px-4 py-3">
+    <Wrapper
+      {...(onPress ? { activeOpacity: 0.9, onPress } : {})}
+      className="rounded-2xl border px-4 py-3"
+      style={{ borderColor: palette.border, backgroundColor: palette.surface }}
+    >
       <View className="flex-row items-start justify-between gap-x-3">
         <View className="flex-1">
           <View className="flex-row items-center gap-x-2">
-            <View className="h-8 w-8 items-center justify-center rounded-full bg-[#073f6a]">
-              <Ionicons name={icon} size={16} color="#37bbff" />
+            <View className="h-8 w-8 items-center justify-center rounded-full" style={{ backgroundColor: palette.surfaceRaised }}>
+              <Ionicons name={icon} size={16} color={palette.amountAccent} />
             </View>
-            <Text className="text-base text-[#8ea5bf]">{title}</Text>
+            <Text className="text-base" style={{ color: palette.textMuted }}>
+              {title}
+            </Text>
           </View>
 
           {!!value && (
-            <Text className={`mt-2 text-lg font-semibold ${valueTone === 'success' ? 'text-[#00f0a0]' : 'text-[#d7e6f7]'}`}>
+            <Text
+              className="mt-2 text-lg font-semibold"
+              style={{ color: valueTone === 'success' ? palette.statusSuccess : palette.textPrimary }}
+            >
               {value}
             </Text>
           )}
 
-          {!!subValue && <Text className="mt-1 text-sm text-[#7f98b7]">{subValue}</Text>}
+          {!!subValue && (
+            <Text className="mt-1 text-sm" style={{ color: palette.textMuted }}>
+              {subValue}
+            </Text>
+          )}
         </View>
 
         <View className="items-end">
           {!!rightLinkText && (
             <TouchableOpacity activeOpacity={0.8} onPress={onRightPress}>
-              <Text className="text-sm font-medium text-[#0caeff]">{rightLinkText}</Text>
+              <Text className="text-sm font-medium" style={{ color: palette.amountAccent }}>
+                {rightLinkText}
+              </Text>
             </TouchableOpacity>
           )}
           {!!priority && (
@@ -61,7 +79,7 @@ export default function DetailCard({
               <PriorityBadge priority={priority} />
             </View>
           )}
-          {showChevron ? <Ionicons name="chevron-down" size={18} color="#6d88aa" /> : null}
+          {showChevron ? <Ionicons name="chevron-down" size={18} color={palette.textMuted} /> : null}
         </View>
       </View>
     </Wrapper>

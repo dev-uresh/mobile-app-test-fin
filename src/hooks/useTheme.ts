@@ -1,24 +1,50 @@
 import { Appearance } from 'react-native';
 import { useEffect, useMemo, useState } from 'react';
-import { MMKV } from 'react-native-mmkv';
 
 import { darkTheme, lightTheme, Theme } from '@/config/theme';
+import { secureStorage } from '@/services/storage/SecureStorage';
 
-const storage = new MMKV();
 const THEME_KEY = 'app-theme';
 
 export function useTheme() {
   const systemTheme = Appearance.getColorScheme() === 'dark' ? darkTheme : lightTheme;
-  const [override, setOverride] = useState<'dark' | 'light' | null>(storage.getString(THEME_KEY) as 'dark' | 'light' | null);
+  const [override, setOverride] = useState<'dark' | 'light' | null>(null);
 
   useEffect(() => {
-    const listener = Appearance.addChangeListener(({ colorScheme }) => {
-      if (!storage.getString(THEME_KEY)) {
-        setOverride(colorScheme === 'dark' ? 'dark' : 'light');
+    let mounted = true;
+
+    secureStorage.getString(THEME_KEY).then((storedTheme) => {
+      if (!mounted) {
+        return;
+      }
+
+      if (storedTheme === 'dark' || storedTheme === 'light') {
+        setOverride(storedTheme);
       }
     });
 
-    return () => listener.remove();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const listener = Appearance.addChangeListener(({ colorScheme }) => {
+      secureStorage.getString(THEME_KEY).then((storedTheme) => {
+        if (!mounted || storedTheme) {
+          return;
+        }
+
+        setOverride(colorScheme === 'dark' ? 'dark' : 'light');
+      });
+    });
+
+    return () => {
+      mounted = false;
+      listener.remove();
+    };
   }, []);
 
   const theme: Theme = useMemo(() => {
@@ -27,8 +53,8 @@ export function useTheme() {
   }, [override]);
 
   const setTheme = (value: 'dark' | 'light') => {
-    storage.set(THEME_KEY, value);
     setOverride(value);
+    void secureStorage.setString(THEME_KEY, value);
   };
 
   return { theme, systemTheme, setTheme };

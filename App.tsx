@@ -6,13 +6,16 @@ import './global.css';
 
 import AppNavigator from '@/navigation/AppNavigator';
 import { store } from '@/store';
+import { useTheme } from '@/hooks/useTheme';
 
 export default function App() {
+  const { theme } = useTheme();
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <Provider store={store}>
-          <StatusBar style="light" backgroundColor="#08131f" />
+          <StatusBar style={theme.statusBarStyle} backgroundColor={theme.statusBarBackground} />
           <AppNavigator />
         </Provider>
       </SafeAreaProvider>

@@ -6,13 +6,16 @@ import ActionButton from '@/components/common/ActionButton';
 import DetailCard from '@/components/common/DetailCard';
 import WorkflowProgress from '@/components/common/WorkflowProgress';
 import { getApprovalById } from '@/store/api/bankingApi';
+import { useTheme } from '@/hooks/useTheme';
 
 export default function CardDetailScreen() {
   const route = useRoute();
+  const { theme } = useTheme();
+  const palette = theme.colors;
   const approval = getApprovalById((route.params as { id?: string } | undefined)?.id);
 
   return (
-    <SafeAreaView edges={['left', 'right', 'bottom']} className="flex-1 bg-[#020b1a]">
+    <SafeAreaView edges={['left', 'right', 'bottom']} className="flex-1" style={{ backgroundColor: palette.screenBackground }}>
       <ScrollView contentContainerStyle={{ paddingHorizontal: 12, paddingTop: 10, paddingBottom: 24 }}>
         <View className="flex-row gap-x-2.5">
           <ActionButton label="Recommend" tone="success" />

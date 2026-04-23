@@ -1,4 +1,5 @@
 import { TextInput, View } from 'react-native';
+import { useTheme } from '@/hooks/useTheme';
 
 interface OTPInputProps {
   value: string;
@@ -7,6 +8,9 @@ interface OTPInputProps {
 }
 
 export default function OTPInput({ value, onChangeText, length = 6 }: OTPInputProps) {
+  const { theme } = useTheme();
+  const palette = theme.colors;
+
   return (
     <View className="flex-row justify-between gap-2">
       {Array.from({ length }).map((_, index) => (
@@ -15,7 +19,8 @@ export default function OTPInput({ value, onChangeText, length = 6 }: OTPInputPr
           value={value[index] ?? ''}
           onChangeText={onChangeText}
           keyboardType="number-pad"
-          className="h-12 w-12 rounded-lg border border-slate-700 bg-slate-800 text-center text-lg text-slate-100"
+          className="h-12 w-12 rounded-lg border text-center text-lg"
+          style={{ borderColor: palette.inputBorder, backgroundColor: palette.inputBackground, color: palette.textPrimary }}
           maxLength={1}
         />
       ))}

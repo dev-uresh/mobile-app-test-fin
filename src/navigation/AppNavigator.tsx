@@ -1,24 +1,26 @@
-import { DarkTheme, NavigationContainer } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import { useMemo } from 'react';
 
 import AuthNavigator from './AuthNavigator';
 import MainNavigator from './MainNavigator';
 import { useAuth } from '@/hooks/useAuth';
-
-const navigationTheme = {
-  ...DarkTheme,
-  colors: {
-    ...DarkTheme.colors,
-    background: '#08131f',
-    card: '#0f2233',
-    border: '#284661',
-    primary: '#3ea9f5',
-    text: '#e8f1fb',
-    notification: '#de6464',
-  },
-};
+import { useTheme } from '@/hooks/useTheme';
 
 export default function AppNavigator() {
   const auth = useAuth();
+  const { theme } = useTheme();
+
+  const navigationTheme = useMemo(() => {
+    const base = theme.name === 'dark' ? DarkTheme : DefaultTheme;
+
+    return {
+      ...base,
+      colors: {
+        ...base.colors,
+        ...theme.navigation,
+      },
+    };
+  }, [theme]);
 
   return (
     <NavigationContainer theme={navigationTheme}>

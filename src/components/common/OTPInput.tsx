@@ -15,7 +15,7 @@ export default function OTPInput({ value, onChangeText, length = 6 }: OTPInputPr
           value={value[index] ?? ''}
           onChangeText={onChangeText}
           keyboardType="number-pad"
-          className="h-12 w-12 rounded-lg border border-industrial-border bg-industrial-surface text-center text-lg text-industrial-text"
+          className="h-12 w-12 rounded-lg border border-slate-700 bg-slate-800 text-center text-lg text-slate-100"
           maxLength={1}
         />
       ))}

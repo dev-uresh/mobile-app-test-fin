@@ -11,10 +11,10 @@ export function Button({ children, variant = 'primary', size = 'md', className =
   const baseStyles = 'rounded-lg items-center justify-center';
 
   const variantStyles = {
-    primary: 'bg-industrial-accent active:bg-industrial-accent-strong',
-    secondary: 'bg-industrial-panel active:bg-industrial-surface',
-    outline: 'border-2 border-industrial-accent bg-transparent active:bg-industrial-surface',
-    danger: 'bg-industrial-danger active:bg-[#be5555]',
+    primary: 'bg-blue-500 active:bg-blue-600',
+    secondary: 'bg-slate-700 active:bg-slate-800',
+    outline: 'border-2 border-blue-500 bg-transparent active:bg-slate-800',
+    danger: 'bg-red-600 active:bg-red-700',
   };
 
   const sizeStyles = {
@@ -26,10 +26,10 @@ export function Button({ children, variant = 'primary', size = 'md', className =
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
   const inlineStyles = StyleSheet.create({
-    primary: { backgroundColor: '#3ea9f5', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
-    secondary: { backgroundColor: '#153147', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
-    outline: { borderWidth: 2, borderColor: '#3ea9f5', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
-    danger: { backgroundColor: '#de6464', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
+    primary: { backgroundColor: '#3b82f6', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
+    secondary: { backgroundColor: '#1e293b', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
+    outline: { borderWidth: 2, borderColor: '#3b82f6', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
+    danger: { backgroundColor: '#dc2626', borderRadius: 8, paddingHorizontal: 24, paddingVertical: 12 },
   });
 
   return (

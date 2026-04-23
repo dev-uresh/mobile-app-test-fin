@@ -4,26 +4,26 @@
 
 @layer utilities {
 	.app-bg {
-		@apply bg-industrial-bg;
+		@apply bg-slate-900;
 	}
 
 	.app-surface {
-		@apply rounded-2xl border border-industrial-border bg-industrial-surface;
+		@apply rounded-2xl border border-slate-700 bg-slate-800;
 	}
 
 	.app-panel {
-		@apply rounded-2xl border border-industrial-border bg-industrial-panel;
+		@apply rounded-2xl border border-slate-700 bg-slate-700;
 	}
 
 	.app-title {
-		@apply text-industrial-text;
+		@apply text-slate-50;
 	}
 
 	.app-body {
-		@apply text-industrial-muted;
+		@apply text-slate-400;
 	}
 
 	.app-caption {
-		@apply text-industrial-dim;
+		@apply text-slate-500;
 	}
 }

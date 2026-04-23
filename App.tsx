@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { StatusBar } from 'expo-status-bar';
 
 import AppNavigator from '@/navigation/AppNavigator';
-import { industrialTheme } from '@/theme/industrial';
 import { store } from '@/store';
 
 export default function App() {
@@ -12,7 +11,7 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <Provider store={store}>
-          <StatusBar style="light" backgroundColor={industrialTheme.colors.bg} />
+          <StatusBar style="light" backgroundColor="#08131f" />
           <AppNavigator />
         </Provider>
       </SafeAreaProvider>

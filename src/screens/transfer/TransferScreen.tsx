@@ -15,7 +15,7 @@ export default function TransferScreen() {
       <TaskInput />
 
       <View className="app-panel mt-8 p-4">
-        <Text className="text-sm text-industrial-text">
+        <Text className="text-sm text-slate-300">
           Tip: Review beneficiary details before confirming.
         </Text>
       </View>

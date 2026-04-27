@@ -1,5 +1,6 @@
 import { Image, Pressable, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { typography } from '@/config/typography';
 import { useTheme } from '@/hooks/useTheme';
 
 interface DashboardHeaderProps {
@@ -37,10 +38,10 @@ export default function Header({ name = 'Admin', subtitle = "Here's what is happ
       </View>
 
       <Image source={require('../../assets/images/logofin.png')} className="mt-4 h-10 w-20" />
-      <Text className="mt-1 text-4xl font-bold" style={{ color: palette.textPrimary }}>
+      <Text className="mt-1 font-bold" style={[typography.styles.hero, { color: palette.textPrimary }]}>
         Welcome Back,{name}
       </Text>
-      <Text className="mt-2 text-sm" style={{ fontSize: 18, color: palette.textMuted }}>
+      <Text className="mt-2" style={[typography.styles.subtitle, { color: palette.textMuted }]}>
         {subtitle}
       </Text>
     </View>

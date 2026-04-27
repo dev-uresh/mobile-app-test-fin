@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Text, View } from 'react-native';
+import { typography } from '@/config/typography';
 import { useTheme } from '@/hooks/useTheme';
 
 interface BalanceCardProps {
@@ -19,14 +20,14 @@ export default function BalanceCard({ icon, label, value, subText = '+3 today', 
       <View className="h-12 w-12 items-center justify-center rounded-xl" style={{ backgroundColor: iconBg ?? palette.surfaceRaised }}>
         {icon}
       </View>
-      <Text className="mt-4 text-sm" style={{ fontSize: 18, color: palette.textMuted }}>
+      <Text className="mt-4" style={[typography.styles.subtitle, { color: palette.textMuted }]}>
         {label}
       </Text>
-      <Text className="mt-2 text-4xl font-bold" style={{ fontSize: 32, color: palette.textPrimary }}>
+      <Text className="mt-2 font-bold" style={[typography.styles.pageTitle, { color: palette.textPrimary }]}>
         {value}
       </Text>
       {subText ? (
-        <Text className="mt-4 text-sm" style={{ fontSize: 16, color: palette.textSecondary }}>
+        <Text className="mt-4" style={[typography.styles.body, { color: palette.textSecondary }]}>
           {subText}
         </Text>
       ) : null}

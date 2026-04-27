@@ -1,4 +1,5 @@
 import { View, Text } from 'react-native';
+import { typography } from '@/config/typography';
 import TaskInput from '@/components/common/Input';
 import { useTheme } from '@/hooks/useTheme';
 
@@ -8,18 +9,18 @@ export default function TransferScreen() {
 
   return (
     <View className="flex-1 p-6" style={{ backgroundColor: palette.screenBackground }}>
-      <Text className="mb-6 text-3xl font-bold" style={{ marginTop: 16, marginBottom: 16, fontSize: 24, color: palette.textPrimary }}>
+      <Text className="mb-6 font-bold" style={[typography.styles.title, { marginTop: 16, marginBottom: 16, color: palette.textPrimary }]}>
         Initiate Transfer
       </Text>
 
-      <Text className="mb-4 text-base" style={{ color: palette.textMuted }}>
+      <Text className="mb-4" style={[typography.styles.body, { color: palette.textMuted }]}>
         Enter transfer details below to prepare a payment or internal transfer.
       </Text>
 
       <TaskInput />
 
       <View className="mt-8 rounded-2xl border p-4" style={{ borderColor: palette.border, backgroundColor: palette.surface }}>
-        <Text className="text-sm" style={{ color: palette.textSecondary }}>
+        <Text style={[typography.styles.bodySmall, { color: palette.textSecondary }]}>
           Tip: Review beneficiary details before confirming.
         </Text>
       </View>

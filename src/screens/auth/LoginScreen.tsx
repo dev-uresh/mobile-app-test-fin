@@ -11,6 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
+import { typography } from '@/config/typography';
 import { useAuth } from '@/hooks/useAuth';
 import { useTheme } from '@/hooks/useTheme';
 
@@ -49,17 +50,17 @@ export default function LoginScreen() {
           </View>
 
           <View className="mt-10 items-center">
-            <Text className="text-4xl font-semibold tracking-[2px]" style={{ fontSize: 34, color: palette.textSecondary }}>
+            <Text className="font-semibold tracking-[2px]" style={[typography.styles.hero, { color: palette.textSecondary }]}>
               WELCOME BACK
             </Text>
-            <Text className="mt-4 text-base" style={{ fontSize: 20, color: palette.textMuted }}>
+            <Text className="mt-4" style={[typography.styles.lead, { color: palette.textMuted }]}>
               Secure access to your approval workspace
             </Text>
           </View>
 
           <View className="mt-12 gap-10">
             <View>
-              <Text className="mb-2 text-base font-medium leading-6" style={{ fontSize: 16, lineHeight: 24, color: palette.textMuted }}>
+              <Text className="mb-2 font-medium" style={[typography.styles.body, { color: palette.textMuted }]}>
                 User Name
               </Text>
               <TextInput
@@ -74,7 +75,7 @@ export default function LoginScreen() {
             </View>
 
             <View>
-              <Text className="mb-2 text-base font-medium leading-6" style={{ fontSize: 16, lineHeight: 24, color: palette.textMuted }}>
+              <Text className="mb-2 font-medium" style={[typography.styles.body, { color: palette.textMuted }]}>
                 Password
               </Text>
               <View
@@ -102,7 +103,7 @@ export default function LoginScreen() {
           </View>
 
           <Pressable className="mt-8 h-14 items-center justify-center rounded-xl" style={{ backgroundColor: palette.amountAccent }} onPress={handleSignIn}>
-            <Text className="text-base font-semibold" style={{ fontSize: 20, color: theme.raw.neutral.white }}>
+            <Text className="font-semibold" style={[typography.styles.buttonLarge, { color: theme.raw.neutral.white }]}>
               Sign in to portal
             </Text>
           </Pressable>

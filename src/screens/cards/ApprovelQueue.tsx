@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { typography } from '@/config/typography';
 import { useTheme } from '@/hooks/useTheme';
 import { approvals } from '@/store/api/bankingApi';
 
@@ -42,10 +43,10 @@ export default function ApprovelQueue() {
           </Pressable>
 
           <View>
-            <Text className="text-[28px] font-semibold uppercase tracking-wide" style={{ color: palette.textPrimary }}>
+            <Text className="font-semibold uppercase tracking-wide" style={[typography.styles.title, { color: palette.textPrimary }]}>
               Approval Queue
             </Text>
-            <Text className="mt-0.5 text-base" style={{ color: palette.textMuted }}>
+            <Text className="mt-0.5" style={[typography.styles.body, { color: palette.textMuted }]}>
               {filtered.length} Items Pending
             </Text>
           </View>
@@ -61,8 +62,8 @@ export default function ApprovelQueue() {
             onChangeText={setSearch}
             placeholder="Search Here"
             placeholderTextColor={palette.textMuted}
-            className="ml-2 flex-1 text-[15px]"
-            style={{ color: palette.textPrimary }}
+            className="ml-2 flex-1"
+            style={[typography.styles.bodySmall, { color: palette.textPrimary }]}
           />
         </View>
 
@@ -71,7 +72,7 @@ export default function ApprovelQueue() {
             className="flex-1 flex-row items-center justify-between rounded-xl border px-3 py-3"
             style={{ borderColor: palette.inputBorder, backgroundColor: palette.inputBackground }}
           >
-            <Text className="text-[15px]" style={{ color: palette.textSecondary }}>
+            <Text style={[typography.styles.bodySmall, { color: palette.textSecondary }]}>
               {selectedBranch.replace('All ', '')}
             </Text>
             <Ionicons name="chevron-down" size={16} color={palette.textMuted} />
@@ -80,7 +81,7 @@ export default function ApprovelQueue() {
             className="flex-1 flex-row items-center justify-between rounded-xl border px-3 py-3"
             style={{ borderColor: palette.inputBorder, backgroundColor: palette.inputBackground }}
           >
-            <Text className="text-[15px]" style={{ color: palette.textSecondary }}>
+            <Text style={[typography.styles.bodySmall, { color: palette.textSecondary }]}>
               {selectedProduct.replace('All ', '')}
             </Text>
             <Ionicons name="chevron-down" size={16} color={palette.textMuted} />
@@ -97,30 +98,30 @@ export default function ApprovelQueue() {
             className="mb-2.5 rounded-md border px-4 py-3"
             style={{ borderColor: palette.border, backgroundColor: palette.surfaceRaised }}
           >
-            <Text className="text-[34px] font-medium tracking-wide" style={{ color: palette.textPrimary }}>
+            <Text className="font-medium tracking-wide" style={[typography.styles.hero, { color: palette.textPrimary }]}>
               {item.appNumber}
             </Text>
-            <Text className="mt-0.5 text-[24px]" style={{ color: palette.textSecondary }}>
+            <Text className="mt-0.5" style={[typography.styles.title, { color: palette.textSecondary }]}>
               Loan / Vehicle Loan
             </Text>
 
             <View className="mt-2 flex-row items-center gap-x-2">
               <Ionicons name="person-circle" size={17} color={palette.iconPrimary} />
-              <Text className="text-[18px]" style={{ color: palette.textPrimary }}>
+              <Text style={[typography.styles.subtitle, { color: palette.textPrimary }]}>
                 {item.customerName}
               </Text>
             </View>
 
             <View className="mt-2 flex-row items-center gap-x-2">
               <Ionicons name="ellipse" size={12} color={palette.amountAccent} />
-              <Text className="text-[26px] font-semibold" style={{ color: palette.amountAccent }}>
+              <Text className="font-semibold" style={[typography.styles.title, { color: palette.amountAccent }]}>
                 {item.amount}
               </Text>
             </View>
 
             <View className="mt-3 flex-row items-center gap-x-1.5">
               <Ionicons name="calendar-clear-outline" size={13} color={palette.textSecondary} />
-              <Text className="text-[14px]" style={{ color: palette.textSecondary }}>
+              <Text style={[typography.styles.bodySmall, { color: palette.textSecondary }]}>
                 Created Date : {item.dueDate}
               </Text>
             </View>
@@ -128,7 +129,7 @@ export default function ApprovelQueue() {
         )}
         contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 4, paddingBottom: 28 }}
         ListEmptyComponent={
-          <Text className="mt-10 text-center text-sm" style={{ color: palette.textMuted }}>
+          <Text className="mt-10 text-center" style={[typography.styles.bodySmall, { color: palette.textMuted }]}>
             No applications found.
           </Text>
         }

@@ -98,10 +98,10 @@ export default function ApprovelQueue() {
             className="mb-2.5 rounded-md border px-4 py-3"
             style={{ borderColor: palette.border, backgroundColor: palette.surfaceRaised }}
           >
-            <Text className="font-medium tracking-wide" style={[typography.styles.hero, { color: palette.textPrimary }]}>
+            <Text className="font-medium tracking-wide" style={[typography.styles.title, { color: palette.textPrimary }]}>
               {item.appNumber}
             </Text>
-            <Text className="mt-0.5" style={[typography.styles.title, { color: palette.textSecondary }]}>
+            <Text className="mt-0.5" style={[typography.styles.lead, { color: palette.textSecondary }]}>
               Loan / Vehicle Loan
             </Text>
 

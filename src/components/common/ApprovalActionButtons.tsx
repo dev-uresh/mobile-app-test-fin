@@ -1,8 +1,12 @@
 import { Pressable, Text, View } from 'react-native';
 
-import { approvalActionRows, ApprovalActionId, ApprovalActionItem } from '@/config/approvalActions';
+import {
+  approvalActionRows,
+  approvalActionStyles,
+  ApprovalActionId,
+  ApprovalActionItem,
+} from '@/config/approvalActions';
 import { typography } from '@/config/typography';
-import { useTheme } from '@/hooks/useTheme';
 
 interface ApprovalActionButtonsProps {
   actions?: readonly (readonly ApprovalActionItem[])[];
@@ -10,9 +14,6 @@ interface ApprovalActionButtonsProps {
 }
 
 export default function ApprovalActionButtons({ actions = approvalActionRows, onActionPress }: ApprovalActionButtonsProps) {
-  const { theme } = useTheme();
-  const palette = theme.colors;
-
   return (
     <View className="mt-3 gap-y-2.5">
       {actions.map((row, rowIndex) => (
@@ -22,9 +23,11 @@ export default function ApprovalActionButtons({ actions = approvalActionRows, on
               key={action.id}
               onPress={() => onActionPress?.(action.id)}
               className="h-10 flex-1 items-center justify-center rounded-full"
-              style={{ backgroundColor: palette.surfaceRaised }}
+              style={{ backgroundColor: approvalActionStyles[action.id].backgroundColor }}
             >
-              <Text style={[typography.styles.bodySmall, { color: palette.textSecondary }]}>{action.label}</Text>
+              <Text style={[typography.styles.bodySmall, { color: approvalActionStyles[action.id].textColor }]}>
+                {action.label}
+              </Text>
             </Pressable>
           ))}
         </View>

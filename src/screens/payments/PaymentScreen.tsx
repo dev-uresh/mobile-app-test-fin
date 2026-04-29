@@ -8,10 +8,10 @@ export default function PaymentScreen() {
   return (
     <View className="flex-1 p-6" style={{ backgroundColor: palette.screenBackground }}>
       <Text className="text-3xl font-bold" style={{ color: palette.textPrimary }}>
-        Payments
+        All leads
       </Text>
       <Text className="mt-2" style={{ color: palette.textMuted }}>
-        Manage bill payments and scheduled payments.
+        Manage all leads and their associated information.
       </Text>
     </View>
   );

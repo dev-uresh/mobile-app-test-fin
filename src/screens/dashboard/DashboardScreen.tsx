@@ -52,9 +52,9 @@ export default function DashboardScreen() {
           ))}
         </View>
 
-        <AccountSummary />
+        {/* <AccountSummary /> */}
         <QuickActions actions={quickActions} />
-        <RecentActivity tasks={recentTasks} />
+        {/* <RecentActivity tasks={recentTasks} /> */}
       </ScrollView>
     </SafeAreaView>
   );

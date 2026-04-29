@@ -62,7 +62,7 @@ export default function CardDetailScreen() {
           {infoTiles.map((tile) => (
             <View
               key={tile.label}
-              className="w-[49%] rounded-md border px-3 py-2.5"
+              className="w-[49%] rounded-md border px-3 py-3.5"
               style={{ borderColor: palette.border, backgroundColor: palette.surfaceRaised }}
             >
               <Text style={[textStyles.tileLabel, { color: palette.textSecondary }]}>{tile.label}</Text>

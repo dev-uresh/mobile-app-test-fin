@@ -1,9 +1,12 @@
 import { Pressable, ScrollView, Text, View } from 'react-native';
+import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import ApprovalActionButtons from '@/components/common/ApprovalActionButtons';
+import ApplicationTree from '@/components/common/ApplicationTree';
+import ApplicationWorkflowHistory from '@/components/common/ApplicationWorkflowHistory';
 import { typography } from '@/config/typography';
 import { getApprovalById } from '@/store/api/bankingApi';
 import { useTheme } from '@/hooks/useTheme';
@@ -13,6 +16,8 @@ export default function CardDetailScreen() {
   const route = useRoute();
   const { theme } = useTheme();
   const palette = theme.colors;
+  const [isWorkflowHistoryOpen, setIsWorkflowHistoryOpen] = useState(false);
+  const [isApplicationTreeOpen, setIsApplicationTreeOpen] = useState(false);
   const approval = getApprovalById((route.params as { id?: string } | undefined)?.id);
 
   const customerNic = `${approval.id}200063301654`.slice(0, 12);
@@ -31,10 +36,20 @@ export default function CardDetailScreen() {
   ];
 
   const sectionRows = [
-    { label: 'Application Workflow History', chevron: true },
-    { label: 'Application Tree', chevron: true },
+    {
+      label: 'Application Workflow History',
+      chevron: true,
+      isOpen: isWorkflowHistoryOpen,
+      onPress: () => setIsWorkflowHistoryOpen((current) => !current),
+    },
+    {
+      label: 'Application Tree',
+      chevron: true,
+      isOpen: isApplicationTreeOpen,
+      onPress: () => setIsApplicationTreeOpen((current) => !current),
+    },
     { label: 'Appraisal Form', chevron: false },
-  ];
+  ] as const;
 
   const textStyles = {
     headerTitle: typography.styles.lead,
@@ -75,14 +90,21 @@ export default function CardDetailScreen() {
 
         <View className="mt-2 gap-y-2">
           {sectionRows.map((row) => (
-            <Pressable
-              key={row.label}
-              className="min-h-12 flex-row items-center justify-between rounded-md border px-3"
-              style={{ borderColor: palette.border, backgroundColor: palette.surfaceRaised }}
-            >
-              <Text style={[textStyles.sectionLabel, { color: palette.textPrimary }]}>{row.label}</Text>
-              {row.chevron ? <Ionicons name="chevron-down" size={16} color={palette.textMuted} /> : null}
-            </Pressable>
+            <View key={row.label}>
+              <Pressable
+                onPress={row.chevron ? row.onPress : undefined}
+                className="min-h-12 flex-row items-center justify-between rounded-md border px-3"
+                style={{ borderColor: palette.border, backgroundColor: palette.surfaceRaised }}
+              >
+                <Text style={[textStyles.sectionLabel, { color: palette.textPrimary }]}>{row.label}</Text>
+                {row.chevron ? (
+                  <Ionicons name={row.isOpen ? 'chevron-up' : 'chevron-down'} size={16} color={palette.textMuted} />
+                ) : null}
+              </Pressable>
+
+              {row.label === 'Application Workflow History' && row.isOpen ? <ApplicationWorkflowHistory /> : null}
+              {row.label === 'Application Tree' && row.isOpen ? <ApplicationTree /> : null}
+            </View>
           ))}
         </View>
 

@@ -1,5 +1,3 @@
-import { ApprovalRouteParams } from '@/types/approval';
-
 export type AuthStackParamList = {
   Login: undefined;
   OTP: undefined;
@@ -8,7 +6,7 @@ export type AuthStackParamList = {
 
 export type MainStackParamList = {
   Tabs: undefined;
-  CardDetail: ApprovalRouteParams;
+  CardDetail: { id?: string } | undefined;
 };
 
 export type BottomTabParamList = {

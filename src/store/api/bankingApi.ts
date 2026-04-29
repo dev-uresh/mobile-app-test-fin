@@ -1,19 +1,14 @@
 import { Priority } from '@/components/common/PriorityBadge';
+import { Approval } from '@/types/approval';
 
-export interface Approval {
-  id: string;
-  appNumber: string;
-  loanType: string;
-  customerName: string;
-  amount: string;
+type ApprovalRecord = Approval & {
   dueDate: string;
   createdDate: string;
   priority: Priority;
-  relationshipManager: string;
   requestedAt: string;
-}
+};
 
-export const approvals: Approval[] = [
+export const approvals: ApprovalRecord[] = [
   {
     id: '1',
     appNumber: 'APP00000856',
@@ -64,11 +59,27 @@ export const approvals: Approval[] = [
   },
 ];
 
-export function getApprovalById(id?: string | string[]) {
+export function findApprovalById(id?: string) {
   if (!id) {
-    return approvals[0];
+    return undefined;
   }
 
-  const normalizedId = Array.isArray(id) ? id[0] : id;
-  return approvals.find((approval) => approval.id === normalizedId) ?? approvals[0];
+  return approvals.find((approval) => approval.id === id);
 }
+
+export async function fetchApprovalById(id?: string): Promise<ApprovalRecord> {
+  await Promise.resolve();
+
+  if (!id) {
+    throw new Error('Missing route params.');
+  }
+
+  const approval = findApprovalById(id);
+
+  if (!approval) {
+    throw new Error('Approval not found.');
+  }
+
+  return approval;
+}
+

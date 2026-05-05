@@ -1,5 +1,6 @@
 import { ScrollView, Text, TouchableOpacity, View, Switch } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useTaskStore } from '@/store/taskStore';
 import { useTheme } from '@/hooks/useTheme';
@@ -12,9 +13,9 @@ export default function ProfileScreen() {
   const pendingTasks = tasks.filter((task) => !task.completed).length;
 
   return (
-    <ScrollView className="flex-1" style={{ backgroundColor: palette.screenBackground }}>
-      <View className="p-6">
-        <View className="mb-8 mt-4 items-center">
+    <SafeAreaView className="flex-1" style={{ backgroundColor: palette.screenBackground }} edges={['top', 'left', 'right']}>
+      <ScrollView contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 12, paddingBottom: 24 }}>
+        <View className="mb-8 items-center">
           <View className="mb-4 h-24 w-24 items-center justify-center rounded-full border" style={{ borderColor: palette.border, backgroundColor: palette.surfaceRaised }}>
             <FontAwesome name="user" size={48} color={palette.amountAccent} />
           </View>
@@ -80,7 +81,7 @@ export default function ProfileScreen() {
         <TouchableOpacity className="mt-4 items-center rounded-lg p-4" style={{ backgroundColor: palette.statusDanger }}>
           <Text className="text-base font-semibold" style={{ color: theme.raw.neutral.white }}>Logout</Text>
         </TouchableOpacity>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }

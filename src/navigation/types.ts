@@ -11,10 +11,6 @@ export type MainStackParamList = {
 
 export type BottomTabParamList = {
   Dashboard: undefined;
-  Cards: undefined;
-  Transfer: undefined;
-  Payments: undefined;
-  Statements: undefined;
+  AllFiles: undefined;
   Profile: undefined;
-  Notifications: undefined;
 };

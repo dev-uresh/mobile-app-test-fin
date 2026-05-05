@@ -37,14 +37,14 @@ export default function DashboardScreen() {
   ];
 
   const quickActions = [
-    { label: 'View Cards', variant: 'primary' as const, onPress: () => navigation.navigate('Cards') },
-    { label: 'View Statements', variant: 'secondary' as const, onPress: () => navigation.navigate('Statements') },
+    { label: 'All Files', variant: 'primary' as const, onPress: () => navigation.navigate('AllFiles') },
+    { label: 'Pending', variant: 'secondary' as const, onPress: () => navigation.navigate('AllFiles') },
   ];
 
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: palette.screenBackground }}>
       <ScrollView contentContainerStyle={{ padding: 16, paddingTop: 8, paddingBottom: 28 }}>
-        <Header name="Admin" onMenuPress={() => navigation.navigate('Profile')} onAlertsPress={() => navigation.navigate('Notifications')} />
+        <Header name="Admin" onMenuPress={() => navigation.navigate('Profile')} onAlertsPress={() => navigation.navigate('AllFiles')} />
 
         <View className="mt-6 flex-row flex-wrap justify-between gap-y-3">
           {stats.map((stat) => (

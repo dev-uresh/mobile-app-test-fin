@@ -6,19 +6,30 @@ import './global.css';
 
 import AppNavigator from '@/navigation/AppNavigator';
 import { store } from '@/store';
+import { ThemeProvider } from '@/hooks/ThemeContext';
 import { useTheme } from '@/hooks/useTheme';
 
 export default function App() {
-  const { theme } = useTheme();
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <Provider store={store}>
-          <StatusBar style={theme.statusBarStyle} backgroundColor={theme.statusBarBackground} />
-          <AppNavigator />
+          <ThemeProvider>
+            <InnerApp />
+          </ThemeProvider>
         </Provider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
+  );
+}
+
+function InnerApp() {
+  const { theme } = useTheme();
+
+  return (
+    <>
+      <StatusBar style={theme.statusBarStyle} backgroundColor={theme.statusBarBackground} />
+      <AppNavigator />
+    </>
   );
 }

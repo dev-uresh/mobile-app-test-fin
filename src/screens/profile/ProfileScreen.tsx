@@ -1,4 +1,4 @@
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View, Switch } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 import { useTaskStore } from '@/store/taskStore';
@@ -6,7 +6,7 @@ import { useTheme } from '@/hooks/useTheme';
 
 export default function ProfileScreen() {
   const tasks = useTaskStore((state) => state.tasks);
-  const { theme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const palette = theme.colors;
   const completedTasks = tasks.filter((task) => task.completed).length;
   const pendingTasks = tasks.filter((task) => !task.completed).length;
@@ -49,13 +49,18 @@ export default function ProfileScreen() {
             </View>
             <Ionicons name="chevron-forward" size={20} color={palette.textMuted} />
           </TouchableOpacity>
-          <TouchableOpacity className="mb-3 flex-row items-center justify-between rounded-lg border p-4" style={{ borderColor: palette.border, backgroundColor: palette.surface }}>
+          <View className="mb-3 flex-row items-center justify-between rounded-lg border p-4" style={{ borderColor: palette.border, backgroundColor: palette.surface }}>
             <View className="flex-row items-center">
               <Ionicons name="color-palette-outline" size={24} color={palette.textSecondary} />
               <Text className="ml-3 text-base" style={{ color: palette.textPrimary }}>Theme</Text>
             </View>
-            <Ionicons name="chevron-forward" size={20} color={palette.textMuted} />
-          </TouchableOpacity>
+            <Switch
+              value={theme.name === 'dark'}
+              onValueChange={(v) => setTheme(v ? 'dark' : 'light')}
+              thumbColor={theme.name === 'dark' ? palette.amountAccent : undefined}
+              trackColor={{ false: palette.border, true: palette.borderStrong }}
+            />
+          </View>
           <TouchableOpacity className="mb-3 flex-row items-center justify-between rounded-lg border p-4" style={{ borderColor: palette.border, backgroundColor: palette.surface }}>
             <View className="flex-row items-center">
               <Ionicons name="language-outline" size={24} color={palette.textSecondary} />

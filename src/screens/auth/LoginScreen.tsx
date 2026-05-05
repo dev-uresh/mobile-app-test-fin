@@ -46,7 +46,7 @@ export default function LoginScreen() {
           </View>
 
           <View className="items-center pt-6">
-            <Image source={require('../../assets/images/logofin.png')} className="h-16 w-56" />
+            <Image source={theme.name === 'light' ? require('../../assets/images/logofin-light.png') : require('../../assets/images/logofin.png')} className="h-16 w-56" />
           </View>
 
           <View className="mt-10 items-center">

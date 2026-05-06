@@ -16,7 +16,7 @@ export default function BalanceCard({ icon, label, value, subText = '+3 today', 
   const palette = theme.colors;
 
   return (
-    <View className="w-[48%] rounded-2xl border p-4" style={{ borderColor: palette.border, backgroundColor: palette.surface }}>
+    <View className="w-[48%] rounded-lg border p-4" style={{ borderColor: palette.border, backgroundColor: palette.surfaceRaised }}>
       <View className="h-12 w-12 items-center justify-center rounded-xl" style={{ backgroundColor: iconBg ?? palette.surfaceRaised }}>
         {icon}
       </View>

@@ -22,7 +22,7 @@ export default function ApprovalActionButtons({ actions = approvalActionRows, on
             <Pressable
               key={action.id}
               onPress={() => onActionPress?.(action.id)}
-              className="h-10 flex-1 items-center justify-center rounded-full"
+              className="h-10 flex-1 items-center justify-center rounded-lg"
               style={{ backgroundColor: approvalActionStyles[action.id].backgroundColor }}
             >
               <Text style={[typography.styles.bodySmall, { color: approvalActionStyles[action.id].textColor }]}>

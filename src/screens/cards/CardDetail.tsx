@@ -53,8 +53,8 @@ export default function CardDetailScreen() {
 
   const textStyles = {
     headerTitle: typography.styles.lead,
-    headerSubtitle: typography.styles.caption,
-    tileLabel: typography.styles.caption,
+    headerSubtitle: typography.styles.body,
+    tileLabel: typography.styles.body,
     tileValue: typography.styles.bodyStrong,
     sectionLabel: typography.styles.bodySmall,
   } as const;

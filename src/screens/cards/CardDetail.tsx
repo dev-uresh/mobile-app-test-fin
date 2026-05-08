@@ -48,7 +48,7 @@ export default function CardDetailScreen() {
       isOpen: isApplicationTreeOpen,
       onPress: () => setIsApplicationTreeOpen((current) => !current),
     },
-    { label: 'Appraisal Form', chevron: false },
+    { label: 'Appraisal Form', chevron: false, onPress: () => navigation.navigate('AppraisalForm') },
   ] as const;
 
   const textStyles = {
@@ -92,7 +92,7 @@ export default function CardDetailScreen() {
           {sectionRows.map((row) => (
             <View key={row.label}>
               <Pressable
-                onPress={row.chevron ? row.onPress : undefined}
+                onPress={row.onPress}
                 className="min-h-12 flex-row items-center justify-between rounded-md border px-3"
                 style={{ borderColor: palette.border, backgroundColor: palette.surfaceRaised }}
               >

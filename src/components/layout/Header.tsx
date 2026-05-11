@@ -37,7 +37,7 @@ export default function Header({ name = 'Admin', subtitle = "Here's what is happ
         </Pressable>
       </View>
 
-      <Image source={theme.name === 'light' ? require('../../assets/images/logofin-light.png') : require('../../assets/images/logofin.png')} className="mt-4 h-10 w-20" />
+      <Image source={theme.name === 'light' ? require('../../assets/images/logoDark.png') : require('../../assets/images/logofin-light.png')} className="mt-4 h-10 w-20" />
       <Text className="mt-1 font-bold" style={[typography.styles.hero, { color: palette.textPrimary }]}>
         Welcome Back,{name}
       </Text>
